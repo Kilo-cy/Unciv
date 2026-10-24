@@ -118,7 +118,8 @@ object CivilopediaHistory : Iterable<Entry> {
      *
      *  For use by [back], [forward] and [CivilopediaHistoryMenu].
      */
-    internal fun navigateTo(index: Int, entry: Entry, action: (Entry) -> Unit) {
+    @VisibleForTesting
+    fun navigateTo(index: Int, entry: Entry, action: (Entry) -> Unit) {
         check(stack[index].sameEntry(entry.category, entry.entry)) { "CivilopediaHistory.navigateTo called with `index` not matching `entry` parameter" }
         navigatingAwayFrom = position
         position = index
